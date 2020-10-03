@@ -174,8 +174,6 @@ else
     echo "Detected Roswell."
 fi
 
-echo "IMMEDIATELY POST Roswell INSTALL----LISP: $LISP";
-
 case "$LISP" in
     alisp|allegro)
 	apt_unless_installed libc6-i386
@@ -200,8 +198,6 @@ case "$LISP" in
         ;;
 esac
 
-echo "LISP version: $LISP";
-
 echo "Installing $LISP..."
 case "$LISP" in
     clisp)
@@ -220,17 +216,14 @@ case "$LISP" in
         install_ecl
         ;;
     sbcl-bin)
-        echo "!!!!!!!!!!!!!!!!!!!!~~~~~~~~~~~~~~~~IN THE SBCL BIN INSTALL~~~~~~~~~~~~~!!!!!!!!!!!!!!!!!!";
         ros use $LISP
         ;;
     sbcl)
-        echo "!!!!!0-------SBCL INSTALL--------!!!!";
         ros install sbcl-bin/2.0.7;
         ros install sbcl/2.0.7;
         ros use sbcl/2.0.7
         ;;
     *)
-        echo "!!!!!------DEFAULT LISP INSTALL!?????-------------!!!!!!!!";
         ros install $LISP;
         ros use $LISP
         ;;
